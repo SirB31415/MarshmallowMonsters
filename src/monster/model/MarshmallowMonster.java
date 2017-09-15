@@ -24,4 +24,11 @@ public class MarshmallowMonster
 		this.tentacleAmount = tentacleCount;
 		this.hasBloop = hasBloop;
 	}
+	
+	public String toString()
+	{
+		String description = "I am a monster, my name is " + name + ", I have " + eyeCount + " eyes and only " + tentacleAmount + "tentacles but I have " + armCount + " arms!" + hasBloop + " tells you if I have a bloop";
+		return description;
+		
+	}
 }
