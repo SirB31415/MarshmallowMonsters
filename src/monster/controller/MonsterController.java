@@ -31,12 +31,18 @@ public class MonsterController
 		
 		interactWithMonster(fred);
 	}
+	
 	private void interactWithMonster(MarshmallowMonster currentMonster)
 	{
 		Scanner myScanner = new Scanner(System.in);
-		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
-		int consumedEyes = myScanner.nextInt();
-		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumedEyes);
+//		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
+		int consumed;
+		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
+		
+		consumed = Integer.parseInt(response);
+		
+//		int consumedEyes = myScanner.nextInt();
+		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
 		System.out.println(currentMonster);
 		
 		System.out.println(currentMonster.getName() + " wants to know how many tentacles you finna eat");
@@ -78,6 +84,22 @@ public class MonsterController
 		System.out.println(answer);
 		
 		myScanner.close();
+	}
+	private boolean isValidInteger(String sample)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Integer.parseInt(sample);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to input an integer, " + sample + "is not valid.");
+		}
+		
+		return valid;
 	}
 
 }
