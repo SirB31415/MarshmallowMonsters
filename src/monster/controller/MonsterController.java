@@ -50,15 +50,16 @@ public class MonsterController
 		popup.displayText(currentMonster.toString());
 //		System.out.println(currentMonster.getName() + " wants to know how many tentacles you finna eat");
 //		double consumedTentacles = myScanner.nextDouble();
-		int consumedTentacles = 0;
+		double consumedTentacles = 0;
 		String response1 = popup.getResponse(currentMonster.getName() + " wants to know how many tentacles you finna eat");
-		if(isValidInteger(response1))
+		if(isValidDouble(response1))
 		{
-			consumedTentacles = Integer.parseInt(response1);
+			consumedTentacles = Double.parseDouble(response1);
 		}
 		if(consumedTentacles == currentMonster.getTentacleAmount())
 		{
-			System.out.println("You ate all my tentacles");
+//			System.out.println("You ate all my tentacles");
+			
 		}
 		else
 		{
@@ -111,4 +112,37 @@ public class MonsterController
 		return valid;
 	}
 
+	private boolean isValidDouble(String sampleDouble)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Double.parseDouble(sampleDouble);
+			valid = true;
+			
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to type in a double - " + sampleDouble + " is not a valid answer.");
+		}
+		
+		return valid;
+	}
+	
+	private boolean isValidBoolean(String sampleBoolean)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Boolean.parseBoolean(sampleBoolean);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to type in a boolean value - " + sampleBoolean + " is not a valid answer");
+		}
+		return valid;
+	}
 }

@@ -15,7 +15,7 @@ public class MonsterDisplay
 		
 		answer += JOptionPane.showInputDialog(null, questionToDisplay);
 		
-		return answer = "";
+		return answer;
 		
 	}
 }
