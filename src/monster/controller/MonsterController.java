@@ -10,7 +10,7 @@ public class MonsterController
 {
 	private MonsterDisplay popup;
 	
-	public MonsterContoller()
+	public MonsterController()
 	{
 		popup = new MonsterDisplay();
 	}
@@ -18,12 +18,16 @@ public class MonsterController
 	public void start()
 	{
 		MarshmallowMonster basic = new MarshmallowMonster();
-		System.out.println(basic);
+//		System.out.println(basic);
+		popup.displayText(basic.toString());
 		MarshmallowMonster fred = new MarshmallowMonster("Silly Fred Monster", 7, 3, 6.7, true);
-		System.out.println(fred);
-		System.out.println("I am feeling hungry, I am going to eat fred's: ");
+//		System.out.println(fred);
+		popup.displayText(fred.toString());
+//		System.out.println("I am feeling hungry, I am going to eat fred's: ");
+		popup.displayText("I am feeling hungry, I am going to eat fred's: ");
 		fred.setArmCount(fred.getArmCount() - 1);
-		System.out.println(fred);
+//		System.out.println(fred);
+		popup.displayText(fred.toString());
 		
 		interactWithMonster(fred);
 	}
