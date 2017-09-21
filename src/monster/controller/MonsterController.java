@@ -36,17 +36,26 @@ public class MonsterController
 	{
 		Scanner myScanner = new Scanner(System.in);
 //		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
-		int consumed;
+		int consumed = 0;
 		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
 		
+		if(isValidInteger(response))
+		{
 		consumed = Integer.parseInt(response);
-		
+		}
+	
 //		int consumedEyes = myScanner.nextInt();
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-		System.out.println(currentMonster);
-		
-		System.out.println(currentMonster.getName() + " wants to know how many tentacles you finna eat");
-		double consumedTentacles = myScanner.nextDouble();
+//		System.out.println(currentMonster);
+		popup.displayText(currentMonster.toString());
+//		System.out.println(currentMonster.getName() + " wants to know how many tentacles you finna eat");
+//		double consumedTentacles = myScanner.nextDouble();
+		int consumedTentacles = 0;
+		String response1 = popup.getResponse(currentMonster.getName() + " wants to know how many tentacles you finna eat");
+		if(isValidInteger(response1))
+		{
+			consumedTentacles = Integer.parseInt(response1);
+		}
 		if(consumedTentacles == currentMonster.getTentacleAmount())
 		{
 			System.out.println("You ate all my tentacles");
