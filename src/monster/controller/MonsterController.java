@@ -59,34 +59,45 @@ public class MonsterController
 		if(consumedTentacles == currentMonster.getTentacleAmount())
 		{
 //			System.out.println("You ate all my tentacles");
-			
+			popup.displayText("You ate all my tentacles");
 		}
 		else
 		{
 			currentMonster.setTentacleAmount(currentMonster.getTentacleAmount() - consumedTentacles);
-			System.out.println(currentMonster);
+//			System.out.println(currentMonster);
+			popup.displayText(currentMonster.toString());
 		}
 		
 		
-		System.out.println("How many arms are you interested in eating? I have " + currentMonster.getArmCount());
-		//consumed = myScanner.nextInt();
-		int armEat = myScanner.nextInt();
+//		System.out.println("How many arms are you interested in eating? I have " + currentMonster.getArmCount());
+//		consumed = myScanner.nextInt();
+		int armEat = 0;
+		String response2 = popup.getResponse("How many arms are you interested in eating? I have " + currentMonster.getArmCount());
+		if(isValidInteger(response2))
+		{
+			armEat = Integer.parseInt(response2);
+		}
+		
 		if (armEat == 0)
 		{
-			System.out.println("Not hungry, so sad.");
+//			System.out.println("Not hungry, so sad.");
+			popup.displayText("Not hungry, so sad");
 		}
 		else if (armEat < 0)
 		{
-			System.out.println("Math is hard for you, this is impossible.");
+//			System.out.println("Math is hard for you, this is impossible.");
+			popup.displayText("Math is hard for you, this is impossible.");
 		}
 		else if (armEat > currentMonster.getArmCount())
 		{
-			System.out.println("You can't eat more arms than I have");
+//			System.out.println("You can't eat more arms than I have");
+			popup.displayText("You can't eat more arms than I have");
 		}
 		else
 		{
 			currentMonster.setArmCount(currentMonster.getArmCount() - armEat);
-			System.out.println("Okay, now I have " + currentMonster.getArmCount());
+//			System.out.println("Okay, now I have " + currentMonster.getArmCount());
+			popup.displayText("Okay, now I have " + currentMonster.getArmCount());
 		}
 		
 		popup.displayText("Hi there ready to play???");
