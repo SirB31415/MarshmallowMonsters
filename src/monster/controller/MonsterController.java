@@ -52,6 +52,12 @@ public class MonsterController
 		int consumed = 0;
 		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many");
 		
+		while(!isValidInteger(response))
+		{
+			popup.displayText("Grr type in a better answer");
+			response = popup.getResponse("Type in an integer value");
+		}
+		
 		if(isValidInteger(response))
 		{
 		consumed = Integer.parseInt(response);
